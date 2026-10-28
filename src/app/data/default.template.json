@@ -1,0 +1,512 @@
+{
+  "schemaVersion": 2,
+  "templateId": "forma-2026-10",
+  "name": "La tua nuova scheda",
+  "days": [
+    {
+      "dayId": "1",
+      "label": "Dorso & bicipiti",
+      "exercises": [
+        {
+          "exerciseId": "rematore_multipower",
+          "name": "Rematore al multipower",
+          "muscleGroup": "Back",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 8
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 8
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 7
+            },
+            {
+              "setIndex": 4,
+              "repsTarget": 6
+            }
+          ],
+          "increment": 2.5,
+          "relatedExerciseId": "rematore_bilanciere"
+        },
+        {
+          "exerciseId": "iliac_pulldown",
+          "name": "Iliac pull down",
+          "muscleGroup": "Back",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 12
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 12
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 10
+            }
+          ],
+          "increment": 2.5
+        },
+        {
+          "exerciseId": "pulley_basso",
+          "name": "Pulley",
+          "muscleGroup": "Back",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 12
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 12
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 10
+            }
+          ],
+          "increment": 2.5
+        },
+        {
+          "exerciseId": "curl_panca_classica",
+          "name": "Curl su panca · presa classica",
+          "muscleGroup": "Biceps",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 10
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 8
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 6
+            },
+            {
+              "setIndex": 4,
+              "repsTarget": 4
+            },
+            {
+              "setIndex": 5,
+              "repsTarget": 6
+            },
+            {
+              "setIndex": 6,
+              "repsTarget": 8
+            },
+            {
+              "setIndex": 7,
+              "repsTarget": 10
+            }
+          ],
+          "increment": 2.5,
+          "technique": "ramp",
+          "incrementNote": "Ramping +2 kg a ogni salita, poi ritorno al carico iniziale.",
+          "weightOffsets": [
+            0,
+            2,
+            4,
+            6,
+            4,
+            2,
+            0
+          ],
+          "relatedExerciseId": "curl_panca_inclinata"
+        },
+        {
+          "exerciseId": "curl_martello_scott",
+          "name": "Curl a martello su panca Scott",
+          "muscleGroup": "Biceps",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 10
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 9
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 8
+            }
+          ],
+          "increment": 2.5,
+          "assumption": "3 serie e target 10/9/8 ripresi dal curl precedente: modificabili."
+        },
+        {
+          "exerciseId": "pulldown_braccia_tese",
+          "name": "Pull down a braccia tese",
+          "muscleGroup": "Back",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 14
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 12
+            }
+          ],
+          "increment": 2.5
+        }
+      ]
+    },
+    {
+      "dayId": "2",
+      "label": "Petto & gambe",
+      "exercises": [
+        {
+          "exerciseId": "chest_press",
+          "name": "Chest press",
+          "muscleGroup": "Chest",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 8
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 8
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 7
+            },
+            {
+              "setIndex": 4,
+              "repsTarget": 6
+            }
+          ],
+          "increment": 2.5
+        },
+        {
+          "exerciseId": "panca_inclinata_multipower",
+          "name": "Panca inclinata al multipower",
+          "muscleGroup": "Chest",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 10
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 9
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 8
+            }
+          ],
+          "increment": 2.5,
+          "relatedExerciseId": "panca_inclinata"
+        },
+        {
+          "exerciseId": "croci_cavi_alti",
+          "name": "Croci ai cavi alti",
+          "muscleGroup": "Chest",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 14
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 12
+            }
+          ],
+          "increment": 2.5,
+          "relatedExerciseId": "croci_cavi"
+        },
+        {
+          "exerciseId": "aperture_posteriori_cavi",
+          "name": "Aperture posteriori ai cavi",
+          "muscleGroup": "Shoulders",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 15
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 15
+            }
+          ],
+          "increment": 2.5,
+          "relatedExerciseId": "face_pull"
+        },
+        {
+          "exerciseId": "leg_extension",
+          "name": "Leg extension",
+          "muscleGroup": "Legs",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 10
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 10
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 9
+            },
+            {
+              "setIndex": 4,
+              "repsTarget": 8
+            }
+          ],
+          "increment": 2.5,
+          "relatedExerciseId": "pressa_45"
+        },
+        {
+          "exerciseId": "adductor_machine",
+          "name": "Adductor machine",
+          "muscleGroup": "Legs",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 10
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 10
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 10
+            }
+          ],
+          "increment": 2.5,
+          "assumption": "Target 10/10/10 ripreso dal precedente accessorio gambe: modificabile."
+        },
+        {
+          "exerciseId": "calf_raise",
+          "name": "Polpacci",
+          "muscleGroup": "Calves",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 15
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 12
+            },
+            {
+              "setIndex": 4,
+              "repsTarget": 12
+            }
+          ],
+          "increment": 2.5,
+          "assumption": "Quarta serie: ripetuto il precedente ultimo target, 12 ripetizioni."
+        }
+      ]
+    },
+    {
+      "dayId": "3",
+      "label": "Spalle, tricipiti & richiami",
+      "exercises": [
+        {
+          "exerciseId": "alzate_laterali",
+          "name": "Alzate laterali",
+          "muscleGroup": "Shoulders",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 15
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 14
+            },
+            {
+              "setIndex": 4,
+              "repsTarget": 12
+            }
+          ],
+          "increment": 2.5
+        },
+        {
+          "exerciseId": "military_press_multipower",
+          "name": "Military press al multipower",
+          "muscleGroup": "Shoulders",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 10
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 9
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 8
+            },
+            {
+              "setIndex": 4,
+              "repsTarget": 6
+            }
+          ],
+          "increment": 2.5
+        },
+        {
+          "exerciseId": "pushdown_corda",
+          "name": "Push down tricipiti",
+          "muscleGroup": "Triceps",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 14
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 12
+            }
+          ],
+          "increment": 2.5,
+          "technique": "drop",
+          "incrementNote": "Ultima serie con scalo: registra separatamente anche lo scalo."
+        },
+        {
+          "exerciseId": "estensioni_tricipiti_cavo",
+          "name": "Overhead extension al cavo basso",
+          "muscleGroup": "Triceps",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 12
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 10
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 8
+            },
+            {
+              "setIndex": 4,
+              "repsTarget": 8
+            }
+          ],
+          "increment": 2.5,
+          "assumption": "Quarta serie: ripetuto il precedente ultimo target, 8 ripetizioni."
+        },
+        {
+          "exerciseId": "hip_thrust",
+          "name": "Hip thrust",
+          "muscleGroup": "Glutes",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 10
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 9
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 8
+            }
+          ],
+          "increment": 2.5
+        },
+        {
+          "exerciseId": "leg_curl",
+          "name": "Leg curl",
+          "muscleGroup": "Hamstrings",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 14
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 12
+            },
+            {
+              "setIndex": 4,
+              "repsTarget": 12
+            }
+          ],
+          "increment": 2.5,
+          "assumption": "Quarta serie: ripetuto il precedente ultimo target, 12 ripetizioni."
+        },
+        {
+          "exerciseId": "lat_machine",
+          "name": "Lat machine · richiamo dorso",
+          "muscleGroup": "Back",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 15
+            }
+          ],
+          "increment": 2.5,
+          "assumption": "Target 15/15 mantenuto dal precedente richiamo dorso, ridotto a 2 serie."
+        },
+        {
+          "exerciseId": "curl_bilanciere",
+          "name": "Curl · richiamo bicipiti",
+          "muscleGroup": "Biceps",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 12
+            }
+          ],
+          "increment": 2.5,
+          "assumption": "Target 15/12 mantenuto dal precedente richiamo bicipiti.",
+          "relatedExerciseId": "curl_panca_inclinata"
+        }
+      ]
+    }
+  ]
+}

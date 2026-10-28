@@ -1,0 +1,14 @@
+import type { ExerciseTemplate } from '../lib/useTemplate';
+// Separate IDs for equipment/technique variants keep load histories comparable.
+const groups: Record<string, [string, string][]> = {
+ Chest: [['panca_piana_bilanciere','Panca piana bilanciere'],['panca_piana_manubri','Panca piana manubri'],['panca_inclinata_manubri','Panca inclinata manubri'],['pec_deck','Pec deck'],['croci_manubri','Croci manubri'],['croci_cavi_bassi','Croci ai cavi bassi'],['dip_petto','Dip petto']],
+ Back: [['trazioni_prone','Trazioni presa prona'],['trazioni_neutre','Trazioni presa neutra'],['trazioni_assistite','Trazioni assistite'],['rematore_manubrio','Rematore manubrio'],['rematore_tbar','Rematore T-bar'],['rematore_macchina','Rematore macchina'],['lat_machine_neutra','Lat machine presa neutra'],['pulley_unilaterale','Pulley unilaterale'],['pullover_macchina','Pullover macchina']],
+ Shoulders: [['shoulder_press_manubri','Shoulder press manubri'],['shoulder_press_macchina','Shoulder press macchina'],['alzate_laterali_cavo','Alzate laterali al cavo'],['alzate_laterali_macchina','Alzate laterali macchina'],['reverse_pec_deck','Reverse pec deck'],['alzate_posteriori_manubri','Alzate posteriori manubri']],
+ Biceps: [['curl_ez','Curl bilanciere EZ'],['curl_scott_ez','Curl Scott EZ'],['curl_martello_manubri','Curl a martello manubri'],['curl_cavo_basso','Curl al cavo basso'],['curl_bayesian','Curl Bayesian'],['curl_concentrato','Curl concentrato']],
+ Triceps: [['pushdown_barra','Push down barra'],['french_press_ez','French press EZ'],['estensioni_manubrio','Estensioni sopra testa manubrio'],['kickback_cavo','Kickback al cavo'],['dip_tricipiti','Dip tricipiti']],
+ Legs: [['squat_bilanciere','Squat bilanciere'],['squat_multipower','Squat multipower'],['hack_squat','Hack squat'],['pressa_orizzontale','Pressa orizzontale'],['leg_extension_unilaterale','Leg extension unilaterale'],['bulgarian_split_squat','Bulgarian split squat'],['goblet_squat','Goblet squat']],
+ Hamstrings: [['stacco_rumeno_bilanciere','Stacco rumeno bilanciere'],['stacco_rumeno_manubri','Stacco rumeno manubri'],['leg_curl_seduto','Leg curl seduto'],['leg_curl_sdraiato','Leg curl sdraiato']],
+ Glutes: [['hip_thrust_bilanciere','Hip thrust bilanciere'],['hip_thrust_macchina','Hip thrust macchina'],['abductor_machine','Abductor machine'],['glute_kickback','Glute kickback al cavo'],['glute_bridge','Glute bridge']],
+ Calves: [['calf_seduto','Calf raise seduto'],['calf_in_piedi','Calf raise in piedi'],['calf_pressa','Polpacci alla pressa']],
+};
+export const exerciseLibrary: ExerciseTemplate[] = Object.entries(groups).flatMap(([muscleGroup, items]) => items.map(([exerciseId, name]) => ({ exerciseId, name, muscleGroup, increment: 2.5, loadMode: exerciseId.includes('assistite') ? 'assisted' : exerciseId.includes('manubri') || exerciseId === 'rematore_manubrio' ? 'each' : 'total', sets: [1, 2, 3].map(setIndex => ({ setIndex, repsTarget: 10 })) })));

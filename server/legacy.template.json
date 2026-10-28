@@ -1,0 +1,597 @@
+{
+  "schemaVersion": 1,
+  "templateId": "3x-week-hypertrophy",
+  "name": "3x Week - Ipertrofia",
+  "days": [
+    {
+      "dayId": "1",
+      "label": "1 - Dorso/Bicipiti",
+      "weekdayHint": "lun",
+      "exercises": [
+        {
+          "exerciseId": "rematore_bilanciere",
+          "name": "Rematore bilanciere/T-bar",
+          "muscleGroup": "Back",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 8,
+              "rpeTarget": 8,
+              "restNote": "2m"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 8,
+              "rpeTarget": 8,
+              "restNote": "2m"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 7,
+              "rpeTarget": 8,
+              "restNote": "2m"
+            },
+            {
+              "setIndex": 4,
+              "repsTarget": 6,
+              "rpeTarget": 8,
+              "restNote": "2m"
+            }
+          ]
+        },
+        {
+          "exerciseId": "lat_machine",
+          "name": "Lat machine presa media/larga",
+          "muscleGroup": "Back",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 10,
+              "rpeTarget": 8,
+              "restNote": "2m - fermo al petto"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 10,
+              "rpeTarget": 8,
+              "restNote": "2m - fermo al petto"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 9,
+              "rpeTarget": 8,
+              "restNote": "2m - fermo al petto"
+            },
+            {
+              "setIndex": 4,
+              "repsTarget": 8,
+              "rpeTarget": 8,
+              "restNote": "2m - fermo al petto"
+            }
+          ]
+        },
+        {
+          "exerciseId": "pulley_basso",
+          "name": "Pulley basso / rematore macchina",
+          "muscleGroup": "Back",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 12,
+              "rpeTarget": 9,
+              "restNote": "90s - negativa lenta, fermo in chiusura"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 12,
+              "rpeTarget": 9,
+              "restNote": "90s - negativa lenta, fermo in chiusura"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 10,
+              "rpeTarget": 9,
+              "restNote": "90s - negativa lenta, fermo in chiusura"
+            }
+          ]
+        },
+        {
+          "exerciseId": "pulldown_braccia_tese",
+          "name": "Pulldown braccia tese ai cavi",
+          "muscleGroup": "Back",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15,
+              "rpeTarget": 10,
+              "restNote": "90s - cedimento, fermo in contrazione"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 14,
+              "rpeTarget": 10,
+              "restNote": "90s - cedimento, fermo in contrazione"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 12,
+              "rpeTarget": 10,
+              "restNote": "90s - cedimento, fermo in contrazione"
+            }
+          ]
+        },
+        {
+          "exerciseId": "face_pull",
+          "name": "Face pull / reverse fly",
+          "muscleGroup": "Shoulders",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15,
+              "rpeTarget": 9,
+              "restNote": "1m"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 15,
+              "rpeTarget": 9,
+              "restNote": "1m"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 15,
+              "rpeTarget": 9,
+              "restNote": "1m"
+            }
+          ]
+        },
+        {
+          "exerciseId": "curl_bilanciere",
+          "name": "Curl bilanciere/manubri",
+          "muscleGroup": "Biceps",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 10,
+              "rpeTarget": 9,
+              "restNote": "90s"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 9,
+              "rpeTarget": 9,
+              "restNote": "90s"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 8,
+              "rpeTarget": 9,
+              "restNote": "90s"
+            }
+          ]
+        },
+        {
+          "exerciseId": "curl_cavi_corda",
+          "name": "Curl ai cavi con corda",
+          "muscleGroup": "Biceps",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15,
+              "rpeTarget": 10,
+              "restNote": "90s - cedimento, fermo in contrazione"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 12,
+              "rpeTarget": 10,
+              "restNote": "90s - cedimento, fermo in contrazione"
+            }
+          ]
+        },
+        {
+          "exerciseId": "iliac_pulldown",
+          "name": "Iliac Pulldown",
+          "muscleGroup": "Back",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 12,
+              "rpeTarget": 9,
+              "restNote": "90s"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 12,
+              "rpeTarget": 9,
+              "restNote": "90s"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 10,
+              "rpeTarget": 9,
+              "restNote": "90s"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dayId": "2",
+      "label": "2 - Petto/Spalle/Tricipiti",
+      "weekdayHint": "mer",
+      "exercises": [
+        {
+          "exerciseId": "chest_press",
+          "name": "Chest press",
+          "muscleGroup": "Chest",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 8,
+              "rpeTarget": 8,
+              "restNote": "2-3m"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 8,
+              "rpeTarget": 8,
+              "restNote": "2-3m"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 7,
+              "rpeTarget": 8,
+              "restNote": "2-3m"
+            },
+            {
+              "setIndex": 4,
+              "repsTarget": 6,
+              "rpeTarget": 8,
+              "restNote": "2-3m"
+            }
+          ]
+        },
+        {
+          "exerciseId": "panca_inclinata",
+          "name": "Panca inclinata",
+          "muscleGroup": "Chest",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 10,
+              "rpeTarget": 9,
+              "restNote": "2m - discesa lenta 3s, fermo e salita esplosiva"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 9,
+              "rpeTarget": 9,
+              "restNote": "2m - discesa lenta 3s, fermo e salita esplosiva"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 8,
+              "rpeTarget": 9,
+              "restNote": "2m - discesa lenta 3s, fermo e salita esplosiva"
+            }
+          ]
+        },
+        {
+          "exerciseId": "croci_cavi",
+          "name": "Croci ai cavi",
+          "muscleGroup": "Chest",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15,
+              "rpeTarget": 10,
+              "restNote": "90s - allungamento, gomiti fissi"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 14,
+              "rpeTarget": 10,
+              "restNote": "90s - allungamento, gomiti fissi"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 12,
+              "rpeTarget": 10,
+              "restNote": "90s - cedimento tecnico"
+            }
+          ]
+        },
+        {
+          "exerciseId": "military_press_multipower",
+          "name": "Military press multipower",
+          "muscleGroup": "Shoulders",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 10,
+              "rpeTarget": 8,
+              "restNote": "2m"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 9,
+              "rpeTarget": 8,
+              "restNote": "2m"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 8,
+              "rpeTarget": 8,
+              "restNote": "2m"
+            },
+            {
+              "setIndex": 4,
+              "repsTarget": 6,
+              "rpeTarget": 8,
+              "restNote": "2m"
+            }
+          ]
+        },
+        {
+          "exerciseId": "alzate_laterali",
+          "name": "Alzate laterali",
+          "muscleGroup": "Shoulders",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15,
+              "rpeTarget": 8,
+              "restNote": "60s"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 15,
+              "rpeTarget": 8,
+              "restNote": "60s"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 14,
+              "rpeTarget": 8,
+              "restNote": "60s"
+            },
+            {
+              "setIndex": 4,
+              "repsTarget": 12,
+              "rpeTarget": 8,
+              "restNote": "60s"
+            }
+          ]
+        },
+        {
+          "exerciseId": "estensioni_tricipiti_cavo",
+          "name": "Estensioni tricipiti sopra testa al cavo (corda)",
+          "muscleGroup": "Triceps",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 12,
+              "rpeTarget": 9,
+              "restNote": "90s - gomiti fissi, allungamento completo"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 10,
+              "rpeTarget": 9,
+              "restNote": "90s - gomiti fissi, allungamento completo"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 8,
+              "rpeTarget": 9,
+              "restNote": "90s - gomiti fissi, allungamento completo"
+            }
+          ]
+        },
+        {
+          "exerciseId": "pushdown_corda",
+          "name": "Push-down alla corda",
+          "muscleGroup": "Triceps",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15,
+              "rpeTarget": 10,
+              "restNote": "90s - cedimento"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 14,
+              "rpeTarget": 10,
+              "restNote": "90s - cedimento"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 12,
+              "rpeTarget": 10,
+              "restNote": "90s - drop-set a cedimento"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dayId": "3",
+      "label": "3 - Gambe",
+      "weekdayHint": "ven",
+      "exercises": [
+        {
+          "exerciseId": "pressa_45",
+          "name": "Pressa 45° / Hack squat / Extension",
+          "muscleGroup": "Legs",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 10,
+              "rpeTarget": 8,
+              "restNote": "2-3m - mantenimento"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 10,
+              "rpeTarget": 8,
+              "restNote": "2-3m - mantenimento"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 9,
+              "rpeTarget": 8,
+              "restNote": "2-3m - mantenimento"
+            },
+            {
+              "setIndex": 4,
+              "repsTarget": 8,
+              "rpeTarget": 8,
+              "restNote": "2-3m - mantenimento"
+            }
+          ]
+        },
+        {
+          "exerciseId": "affondi",
+          "name": "Affondi camminati / Bulgari",
+          "muscleGroup": "Legs",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 10,
+              "rpeTarget": 8,
+              "restNote": "120s - per gamba"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 10,
+              "rpeTarget": 8,
+              "restNote": "120s - per gamba"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 10,
+              "rpeTarget": 8,
+              "restNote": "120s - per gamba"
+            }
+          ]
+        },
+        {
+          "exerciseId": "hip_thrust",
+          "name": "Hip thrust",
+          "muscleGroup": "Glutes",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 10,
+              "rpeTarget": 8,
+              "restNote": "2m - fermo 2s in contrazione"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 9,
+              "rpeTarget": 8,
+              "restNote": "2m - fermo 2s in contrazione"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 8,
+              "rpeTarget": 8,
+              "restNote": "2m - fermo 2s in contrazione"
+            }
+          ]
+        },
+        {
+          "exerciseId": "leg_curl",
+          "name": "Leg curl sdraiato/seduto",
+          "muscleGroup": "Hamstrings",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15,
+              "rpeTarget": 8,
+              "restNote": "90s - eccentrica lenta"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 14,
+              "rpeTarget": 8,
+              "restNote": "90s - eccentrica lenta"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 12,
+              "rpeTarget": 8,
+              "restNote": "90s - eccentrica lenta"
+            }
+          ]
+        },
+        {
+          "exerciseId": "calf_raise",
+          "name": "Calf raise",
+          "muscleGroup": "Calves",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15,
+              "rpeTarget": 8,
+              "restNote": "60s - allungamento massimo, fermo in alto"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 15,
+              "rpeTarget": 8,
+              "restNote": "60s - allungamento massimo, fermo in alto"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 12,
+              "rpeTarget": 8,
+              "restNote": "60s - allungamento massimo, fermo in alto"
+            }
+          ]
+        },
+        {
+          "exerciseId": "lat_pulldown_stretta",
+          "name": "Lat pulldown presa stretta",
+          "muscleGroup": "Back",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15,
+              "restNote": "90s - carico medio-leggero"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 15,
+              "restNote": "90s - carico medio-leggero"
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 12,
+              "restNote": "90s - carico medio-leggero"
+            }
+          ]
+        },
+        {
+          "exerciseId": "curl_panca_inclinata",
+          "name": "Curl manubri su panca inclinata",
+          "muscleGroup": "Biceps",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15,
+              "restNote": "90s - carico medio-leggero"
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 12,
+              "restNote": "90s - carico medio-leggero"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

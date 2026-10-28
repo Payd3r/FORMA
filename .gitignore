@@ -1,0 +1,25 @@
+node_modules/
+server/node_modules/
+dist/
+server/dist/
+.env
+.env.local
+.env.*.local
+server/data/
+*.tsbuildinfo
+test-results/
+playwright-report/
+artifacts/
+backups/
+
+# Local configuration, data and editorial workspace
+.env*
+!.env.example
+.portfolio-export/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite-*
+*.log
+.DS_Store

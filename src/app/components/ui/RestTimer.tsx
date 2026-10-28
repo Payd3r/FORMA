@@ -1,0 +1,10 @@
+import { useEffect, useState } from 'react';
+import type { RestTimer as Timer } from '../../lib/restTimer';
+import Icon from './Icon';
+export default function RestTimer({ timer, onEnd, onExtend }: { timer: Timer; onEnd: () => void; onExtend: () => void }) {
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => { setNow(Date.now()); const tick = setInterval(() => setNow(Date.now()), 500); return () => clearInterval(tick); }, [timer.deadline]);
+  const remaining = Math.max(0, Math.ceil((timer.deadline - now) / 1000));
+  const progress = Math.min(1, Math.max(0, (now - timer.startedAt) / (timer.deadline - timer.startedAt)));
+  return <section className={`rest-timer ${remaining === 0 ? 'rest-ready' : ''}`} data-testid="rest-timer" aria-label="Recupero tra le serie"><svg className="rest-ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="currentColor" strokeOpacity=".12" strokeWidth="5" /><circle cx="32" cy="32" r="27" fill="none" stroke="currentColor" strokeWidth="5" strokeDasharray="169.65" strokeDashoffset={169.65 * (1 - progress)} strokeLinecap="round" transform="rotate(-90 32 32)" /><path d="M32 19v13l7 5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg><div className="rest-time"><span className="eyebrow">{remaining ? 'RECUPERO' : 'TIMER TERMINATO'}</span><strong role="timer" aria-label="Tempo di recupero">{String(Math.floor(remaining / 60)).padStart(2, '0')}<span>:</span>{String(remaining % 60).padStart(2, '0')}</strong></div><div className="rest-controls"><button className="rest-extend" onClick={onExtend}>+30 s</button><button className="rest-start" onClick={onEnd}>{remaining ? 'Salta recupero' : 'Inizia serie'}<Icon name="arrow" size={16} /></button></div><details className="rest-explanation"><summary>{timer.source === 'history' ? `Dal tuo storico · ${timer.sampleCount} misurazioni` : timer.source === 'plan' ? 'Dalla scheda' : 'Tempo iniziale'} <span>ⓘ</span></summary><p>{timer.reasons.join(' · ')} · Il timer è un riferimento, puoi ripartire quando vuoi</p></details></section>;
+}

@@ -21,7 +21,7 @@
   <a href="docs/TECHNICAL.md">Documentazione tecnica</a>
 </p>
 
-![FORMA su telefono e desktop, con dati dimostrativi](docs/images/forma-overview.webp)
+![FORMA su telefono e desktop, con dati dimostrativi](docs/images/forma-overview.webp?v=rounded-2)
 
 ## 📖 Panoramica
 

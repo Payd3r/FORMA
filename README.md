@@ -44,8 +44,6 @@ Il telefono è il punto di partenza; il desktop offre una disposizione dedicata 
   <img src="docs/images/forma-workout.webp" width="300" alt="Sessione mobile con peso precedente, conferma e recupero" />
 </p>
 
-![Progressi su desktop con dati sintetici](docs/images/forma-progress.webp)
-
 ## 🎨 Nome e design system
 
 **FORMA**, dal latino *forma*: forma, aspetto. L'icona unisce un kettlebell alla lettera F. Il sistema visivo usa superfici chiare, testo scuro e un accento lime per azioni e stati, con tipografia Arial e componenti coerenti tra telefono e desktop.

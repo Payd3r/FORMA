@@ -2,7 +2,7 @@ import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import Button from './Button';
 
-export type BottomSheetProps = { open: boolean; title?: string; description?: string; confirmLabel?: string; cancelLabel?: string; tone?: 'default' | 'danger'; onConfirm?: () => void | Promise<void>; onClose: () => void; children?: ReactNode };
+export type BottomSheetProps = { open: boolean; title?: string; description?: string; confirmLabel?: string; cancelLabel?: string; tone?: 'default' | 'danger'; onConfirm?: () => void | Promise<void>; onClose: () => void; children?: ReactNode; footer?: ReactNode };
 let locks = 0;
 let unlockPage: (() => void) | undefined;
 function lockPage() {
@@ -14,8 +14,8 @@ function lockPage() {
     const rootBackground = document.documentElement.style.backgroundColor;
     const themeMeta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
     const themeColor = themeMeta?.content;
-    document.documentElement.style.backgroundColor = '#9ca29e';
-    themeMeta?.setAttribute('content', '#9ca29e');
+    document.documentElement.style.backgroundColor = 'rgba(20, 32, 27, 0.4)';
+    themeMeta?.setAttribute('content', '#14201b');
     document.documentElement.classList.add('sheet-is-open');
     Object.assign(body.style, { position: 'fixed', top: `-${y}px`, left: '0', right: '0', width: '100%', overflow: 'hidden' });
     document.documentElement.style.overflow = 'hidden';
@@ -23,7 +23,7 @@ function lockPage() {
   }
   return () => { if (--locks === 0) { unlockPage?.(); unlockPage = undefined; } };
 }
-export default function BottomSheet({ open, title, description, confirmLabel = 'Conferma', cancelLabel = 'Annulla', tone, onConfirm, onClose, children }: BottomSheetProps) {
+export default function BottomSheet({ open, title, description, confirmLabel = 'Conferma', cancelLabel = 'Annulla', tone, onConfirm, onClose, children, footer }: BottomSheetProps) {
   const dialog = useRef<HTMLDialogElement>(null); const panel = useRef<HTMLDivElement>(null); const content = useRef<HTMLDivElement>(null);
   const [busy, setBusy] = useState(false); const [error, setError] = useState(''); const [closing, setClosing] = useState(false);
   const titleId = useId(); const descriptionId = useId();
@@ -100,12 +100,32 @@ export default function BottomSheet({ open, title, description, confirmLabel = '
     node.addEventListener('touchstart', start, { passive: true }); node.addEventListener('touchmove', move, { passive: false }); node.addEventListener('touchend', end); node.addEventListener('touchcancel', cancel);
     return () => { node.removeEventListener('touchstart', start); node.removeEventListener('touchmove', move); node.removeEventListener('touchend', end); node.removeEventListener('touchcancel', cancel); };
   }, [open]);
-  return createPortal(<dialog ref={dialog} className="bottom-sheet" aria-labelledby={title ? titleId : undefined} aria-describedby={description ? descriptionId : undefined} onCancel={event => { event.preventDefault(); requestClose(); }} onClick={event => { if (event.target === dialog.current) requestClose(); }}>
-    <div ref={panel} className={`sheet-panel ${closing ? 'sheet-closing' : ''}`} onClickCapture={event => { if (dragged.current) { event.preventDefault(); event.stopPropagation(); dragged.current = false; } }}>
-      <div className="sheet-handle" aria-hidden="true"><span /></div>
-      <header className="sheet-header"><div>{title && <h2 id={titleId}>{title}</h2>}{description && <p id={descriptionId}>{description}</p>}</div></header>
-      <div ref={content} className="sheet-content">{children}{error && <p role="alert" className="error-message">{error}</p>}</div>
-      <footer className="sheet-footer"><Button variant="secondary" onClick={requestClose} disabled={busy}>{cancelLabel}</Button>{onConfirm && <Button loading={busy} variant={tone === 'danger' ? 'danger' : 'primary'} onClick={async () => { setBusy(true); setError(''); try { await onConfirm(); setBusy(false); closeRef.current(); } catch (e) { setError(e instanceof Error ? e.message : 'Operazione non riuscita'); setBusy(false); } }}>{confirmLabel}</Button>}</footer>
-    </div>
-  </dialog>, document.body);
+  return createPortal(
+    <dialog
+      ref={dialog}
+      className="bottom-sheet"
+      aria-labelledby={title ? titleId : undefined}
+      aria-describedby={description ? descriptionId : undefined}
+      onCancel={event => { event.preventDefault(); requestClose(); }}
+      onClick={event => { if (event.target === dialog.current) requestClose(); }}
+    >
+      <div className="sheet-backdrop-overlay" aria-hidden="true" onClick={requestClose} />
+      <div ref={panel} className={`sheet-panel ${closing ? 'sheet-closing' : ''}`} onClickCapture={event => { if (dragged.current) { event.preventDefault(); event.stopPropagation(); dragged.current = false; } }}>
+        <div className="sheet-handle" aria-hidden="true"><span /></div>
+        <header className="sheet-header"><div>{title && <h2 id={titleId}>{title}</h2>}{description && <p id={descriptionId}>{description}</p>}</div></header>
+        <div ref={content} className="sheet-content">{children}{error && <p role="alert" className="error-message">{error}</p>}</div>
+        <footer className="sheet-footer">
+          {footer !== undefined ? (
+            footer
+          ) : (
+            <>
+              <Button variant="secondary" onClick={requestClose} disabled={busy}>{cancelLabel}</Button>
+              {onConfirm && <Button loading={busy} variant={tone === 'danger' ? 'danger' : 'primary'} onClick={async () => { setBusy(true); setError(''); try { await onConfirm(); setBusy(false); closeRef.current(); } catch (e) { setError(e instanceof Error ? e.message : 'Operazione non riuscita'); setBusy(false); } }}>{confirmLabel}</Button>}
+            </>
+          )}
+        </footer>
+      </div>
+    </dialog>,
+    document.body
+  );
 }

@@ -16,6 +16,7 @@ export function exerciseMovement(exercise: ExerciseArtProps['exercise']): Moveme
   if (/overhead|estensioni_tricipiti_cavo/.test(id)) return 'tricepsOverhead';
   if (/hip|glute_bridge|stacco|rumeno/.test(id)) return 'hinge';
   if (/calf|polpacc/.test(id)) return 'calf';
+  if (/pressa_piana|leg_press_orizzontale|pressa_orizzontale/.test(id)) return 'leg';
   if (/leg_|adductor|abductor/.test(id)) return 'leg';
   if (/squat|pressa|affondi|bulgar/.test(id)) return 'squat';
   if (/alzate|posteriori|face_pull|reverse/.test(id)) return 'lateral';

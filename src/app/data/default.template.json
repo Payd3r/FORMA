@@ -234,27 +234,6 @@
           "relatedExerciseId": "croci_cavi"
         },
         {
-          "exerciseId": "aperture_posteriori_cavi",
-          "name": "Aperture posteriori ai cavi",
-          "muscleGroup": "Shoulders",
-          "sets": [
-            {
-              "setIndex": 1,
-              "repsTarget": 15
-            },
-            {
-              "setIndex": 2,
-              "repsTarget": 15
-            },
-            {
-              "setIndex": 3,
-              "repsTarget": 15
-            }
-          ],
-          "increment": 2.5,
-          "relatedExerciseId": "face_pull"
-        },
-        {
           "exerciseId": "leg_extension",
           "name": "Leg extension",
           "muscleGroup": "Legs",
@@ -278,6 +257,26 @@
           ],
           "increment": 2.5,
           "relatedExerciseId": "pressa_45"
+        },
+        {
+          "exerciseId": "pressa_piana",
+          "name": "Pressa piana",
+          "muscleGroup": "Legs",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 10
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 10
+            },
+            {
+              "setIndex": 3,
+              "repsTarget": 10
+            }
+          ],
+          "increment": 5
         },
         {
           "exerciseId": "adductor_machine",
@@ -324,6 +323,41 @@
           ],
           "increment": 2.5,
           "assumption": "Quarta serie: ripetuto il precedente ultimo target, 12 ripetizioni."
+        },
+        {
+          "exerciseId": "lat_machine",
+          "name": "Lat machine · richiamo dorso",
+          "muscleGroup": "Back",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 15
+            }
+          ],
+          "increment": 2.5,
+          "assumption": "Target 15/15 mantenuto dal precedente richiamo dorso, ridotto a 2 serie."
+        },
+        {
+          "exerciseId": "curl_bilanciere",
+          "name": "Curl · richiamo bicipiti",
+          "muscleGroup": "Biceps",
+          "sets": [
+            {
+              "setIndex": 1,
+              "repsTarget": 15
+            },
+            {
+              "setIndex": 2,
+              "repsTarget": 12
+            }
+          ],
+          "increment": 2.5,
+          "assumption": "Target 15/12 mantenuto dal precedente richiamo bicipiti.",
+          "relatedExerciseId": "curl_panca_inclinata"
         }
       ]
     },
@@ -472,9 +506,9 @@
           "assumption": "Quarta serie: ripetuto il precedente ultimo target, 12 ripetizioni."
         },
         {
-          "exerciseId": "lat_machine",
-          "name": "Lat machine · richiamo dorso",
-          "muscleGroup": "Back",
+          "exerciseId": "aperture_posteriori_cavi",
+          "name": "Aperture posteriori ai cavi",
+          "muscleGroup": "Shoulders",
           "sets": [
             {
               "setIndex": 1,
@@ -483,28 +517,14 @@
             {
               "setIndex": 2,
               "repsTarget": 15
-            }
-          ],
-          "increment": 2.5,
-          "assumption": "Target 15/15 mantenuto dal precedente richiamo dorso, ridotto a 2 serie."
-        },
-        {
-          "exerciseId": "curl_bilanciere",
-          "name": "Curl · richiamo bicipiti",
-          "muscleGroup": "Biceps",
-          "sets": [
-            {
-              "setIndex": 1,
-              "repsTarget": 15
             },
             {
-              "setIndex": 2,
-              "repsTarget": 12
+              "setIndex": 3,
+              "repsTarget": 15
             }
           ],
           "increment": 2.5,
-          "assumption": "Target 15/12 mantenuto dal precedente richiamo bicipiti.",
-          "relatedExerciseId": "curl_panca_inclinata"
+          "relatedExerciseId": "face_pull"
         }
       ]
     }

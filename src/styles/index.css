@@ -45,17 +45,18 @@
 @media(max-width:760px){.recovery-map.compact>div:nth-child(2){grid-template-columns:112px minmax(0,1fr)!important;gap:12px!important}.recovery-map.compact>div:nth-child(2)>div>button{font-size:10px!important}.exercise-stepper>button:not(.current){min-width:41px;min-height:44px}}
 @media(max-width:760px){.workout-page:has(.focused-workout) .exercise-navigation{position:fixed;left:20px;right:20px;bottom:calc(78px + env(safe-area-inset-bottom,0px));max-width:610px;margin:0 auto;padding:8px 0;box-shadow:0 -4px 20px #f7f9f580}.app-content:has(.focused-workout) .page-content{padding-bottom:calc(160px + env(safe-area-inset-bottom,0px))}.focused-workout .exercise-advice{margin-top:12px}.exercise-stepper .current>small{overflow:hidden;text-overflow:ellipsis}}
 /* Native top-layer iOS-style sheet, with one scrollable body and fixed actions. */
-.bottom-sheet{position:fixed;inset:auto;top:var(--sheet-viewport-top,0px);left:0;width:100%;height:var(--sheet-viewport-height,100dvh);max-width:none;max-height:none;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:hidden;overscroll-behavior:none;outline:none}.bottom-sheet[open]{display:flex;align-items:flex-end;justify-content:center}.bottom-sheet::backdrop{background:#14201b66;backdrop-filter:blur(4px);animation:sheet-backdrop-in .2s ease-out}.sheet-panel{display:flex;flex-direction:column;width:100%;max-width:620px;max-height:calc(100% - max(18px,env(safe-area-inset-top,0px)));min-height:0;background:#fff;border-radius:28px 28px 0 0;box-shadow:0 -10px 60px #12251c1a;overflow:hidden;transform:translate3d(0,0,0);transition:transform .2s cubic-bezier(.2,.8,.2,1);animation:sheet-enter .26s cubic-bezier(.2,.8,.2,1);will-change:transform;touch-action:pan-y;overscroll-behavior:none}.sheet-panel.sheet-closing{transform:translate3d(0,105%,0);transition:transform .18s ease-in;pointer-events:none}.sheet-handle{height:24px;flex:0 0 24px;display:flex;align-items:center;justify-content:center;touch-action:none}.sheet-handle>span{width:37px;height:5px;border-radius:9px;background:#ccd1cd}.sheet-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:4px 24px 19px;flex-shrink:0;border-bottom:1px solid #eef1ea}.sheet-header>div{flex:1;min-width:0}.sheet-header h2{font-size:23px;font-weight:700;line-height:1.2;letter-spacing:-.7px;padding-top:3px}.sheet-header p{font-size:12px;line-height:1.65;color:var(--color-muted);margin-top:9px}.sheet-content{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:21px 24px;scroll-padding:16px;touch-action:pan-y}.sheet-content:empty{padding:0;flex:0}.sheet-content>.error-message{margin-top:15px}.sheet-footer{display:flex;flex-shrink:0;gap:11px;padding:15px 24px max(15px,env(safe-area-inset-bottom,0px));border-top:1px solid #e9ede5;background:#fff;position:relative;z-index:1}.sheet-footer>.btn{flex:1;min-height:48px;border-radius:13px;font-size:13px}.bottom-sheet.keyboard-open .sheet-footer{padding-bottom:12px}.bottom-sheet.keyboard-open .sheet-panel{max-height:calc(100% - 8px)}.sheet-content .plan-view,.sheet-content .picker-list,.sheet-content .exercise-history,.sheet-content .order-list{max-height:none;overflow:visible}.sheet-content .search-field{flex:none}.sheet-content input,.sheet-content select,.sheet-content textarea{font-size:16px}.sheet-content .plan-view section:last-child{padding-bottom:2px}.sheet-content .plan-view-exercise:last-child{border-bottom:0}.sheet-content .notice{font-size:12px}.plan-buttons{display:flex;align-items:center;flex-wrap:nowrap;gap:8px;width:100%}.plan-buttons>.plan-view-button{flex:1;min-width:0}.plan-buttons>.plan-icon-button{flex:0 0 44px;width:44px;height:44px;padding:0;min-height:44px}.plan-buttons>.btn:not(.plan-icon-button){min-height:44px;white-space:nowrap}.activity-badge{align-items:center}.dashboard-page>.page-title>.activity-badge{align-items:center}.sync-indicator{width:28px;min-height:34px;justify-content:center;padding:0}.sync-indicator .status-dot{width:7px;height:7px}.sync-indicator.syncing .status-dot{animation:sync-dot-pulse 1.4s ease-in-out infinite}.history-count{display:flex;align-items:center}.recovery-panel .recovery-map{padding-bottom:0}
+.bottom-sheet{position:fixed;inset:0 auto auto 0;top:var(--sheet-viewport-top,0px);left:0;width:100%;height:var(--sheet-viewport-height,100dvh);max-width:none;max-height:none;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:visible;overscroll-behavior:none;outline:none}.bottom-sheet.keyboard-open{top:var(--sheet-viewport-top,0px);height:var(--sheet-viewport-height,100dvh)}.bottom-sheet[open]{display:flex;align-items:flex-end;justify-content:center}.bottom-sheet::backdrop{background:#14201b66;backdrop-filter:blur(4px);animation:sheet-backdrop-in .2s ease-out}.sheet-panel{display:flex;flex-direction:column;width:100%;max-width:620px;max-height:calc(100% - env(safe-area-inset-top,0px) - 24px);min-height:0;background:#fff;border-radius:28px 28px 0 0;box-shadow:0 -10px 60px #12251c1a;overflow:hidden;transform:translate3d(0,0,0);transition:transform .2s cubic-bezier(.2,.8,.2,1);animation:sheet-enter .26s cubic-bezier(.2,.8,.2,1);will-change:transform;touch-action:pan-y;overscroll-behavior:none}.sheet-panel.sheet-closing{transform:translate3d(0,105%,0);transition:transform .18s ease-in;pointer-events:none}.sheet-handle{height:24px;flex:0 0 24px;display:flex;align-items:center;justify-content:center;touch-action:none}.sheet-handle>span{width:37px;height:5px;border-radius:9px;background:#ccd1cd}.sheet-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:4px 24px 19px;flex-shrink:0;border-bottom:1px solid #eef1ea}.sheet-header>div{flex:1;min-width:0}.sheet-header h2{font-size:23px;font-weight:700;line-height:1.2;letter-spacing:-.7px;padding-top:3px}.sheet-header p{font-size:12px;line-height:1.65;color:var(--color-muted);margin-top:9px}.sheet-content{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:21px 24px;scroll-padding:16px;touch-action:pan-y}.sheet-content:empty{padding:0;flex:0}.sheet-content>.error-message{margin-top:15px}.sheet-footer{display:flex;flex-shrink:0;gap:11px;padding:15px 24px max(15px,env(safe-area-inset-bottom,0px));border-top:1px solid #e9ede5;background:#fff;position:relative;z-index:1}.sheet-footer>.btn{flex:1;min-height:48px;border-radius:13px;font-size:13px}.bottom-sheet.keyboard-open .sheet-footer{padding-bottom:12px}.bottom-sheet.keyboard-open .sheet-panel{max-height:calc(100% - max(8px,env(safe-area-inset-top,0px)))}.sheet-content .plan-view,.sheet-content .picker-list,.sheet-content .exercise-history,.sheet-content .order-list{max-height:none;overflow:visible}.sheet-content .search-field{flex:none}.sheet-content input,.sheet-content select,.sheet-content textarea{font-size:16px}.sheet-content .plan-view section:last-child{padding-bottom:2px}.sheet-content .plan-view-exercise:last-child{border-bottom:0}.sheet-content .notice{font-size:12px}.plan-buttons{display:flex;align-items:center;flex-wrap:nowrap;gap:8px;width:100%}.plan-buttons>.plan-view-button{flex:1;min-width:0}.plan-buttons>.plan-icon-button{flex:0 0 44px;width:44px;height:44px;padding:0;min-height:44px}.plan-buttons>.btn:not(.plan-icon-button){min-height:44px;white-space:nowrap}.activity-badge{align-items:center}.dashboard-page>.page-title>.activity-badge{align-items:center}.sync-indicator{width:28px;min-height:34px;justify-content:center;padding:0}.sync-indicator .status-dot{width:7px;height:7px}.sync-indicator.syncing .status-dot{animation:sync-dot-pulse 1.4s ease-in-out infinite}.history-count{display:flex;align-items:center}.recovery-panel .recovery-map{padding-bottom:0}
 @keyframes sheet-enter{from{transform:translate3d(0,100%,0)}to{transform:translate3d(0,0,0)}}@keyframes sheet-backdrop-in{from{opacity:0}to{opacity:1}}@keyframes sync-dot-pulse{50%{opacity:.35}}
 @media(min-width:761px){.sheet-panel{max-height:min(88%,900px);border-radius:28px 28px 0 0}.sheet-content{padding:24px}.sheet-header{padding-bottom:21px}.sheet-footer{padding-bottom:20px}}
 @media(max-width:760px){.sheet-header{padding:3px 21px 17px}.sheet-header h2{font-size:22px}.sheet-header p{font-size:11px}.sheet-content{padding:18px 21px}.sheet-footer{padding:13px 21px max(13px,env(safe-area-inset-bottom,0px));gap:9px}.sheet-footer>.btn{font-size:12px;min-height:47px}.plan-buttons{gap:7px}.plan-buttons>.plan-icon-button{flex-basis:42px;width:42px;padding:0}.plan-buttons>.btn:not(.plan-icon-button){font-size:10px;padding-left:12px;padding-right:12px}.activity-badge>svg{display:block!important}.dashboard-page>.page-title>.activity-badge{gap:8px}.activity-badge strong{font-size:25px}.sheet-content .picker-list{margin-top:12px}}
+/* Keep iOS from auto-zooming text areas on focus while retaining pinch zoom. */
+@media(max-width:760px){textarea,.focused-workout .notes-input{font-size:16px}}
 @media(prefers-reduced-motion:reduce){.sheet-panel,.bottom-sheet::backdrop{animation:none!important;transition:none!important}}
 
 /* Compact mobile chrome: icon-only navigation, unchanged safe-area protection. */
 @media(max-width:760px){.mobile-nav{padding:6px 5px}.mobile-nav>a{min-height:44px;gap:0}.mobile-nav>a>svg{width:26px;height:26px}.app-header{height:calc(50px + env(safe-area-inset-top,0px))}.page-content{padding-top:11px}}
 /* Cover the complete display, including standalone iOS status-bar safe areas. */
 .bottom-sheet{color:var(--color-text)}.bottom-sheet::backdrop{position:fixed;top:-100vh;left:-100vw;right:-100vw;bottom:-100vh;width:300vw;height:300vh;background:#14201b66;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}.sheet-is-open{overscroll-behavior:none}.sheet-header{display:block}.sheet-header h2{padding-top:0}.sheet-handle{height:26px;flex-basis:26px}
-
 
 /* Active Workout Full-Screen Mode & Floating Controls */
 body:has(.workout-active-mode) .mobile-nav {
@@ -549,16 +550,12 @@ body:has(.workout-active-mode) .app-header {
   flex-direction: column;
   gap: 4px;
   flex: 1;
+  min-width: 0;
 }
 
 .plan-day-inline-input {
   font-size: 17px;
   font-weight: 700;
-  background: transparent;
-  border: none;
-  color: var(--color-text);
-  padding: 0;
-  outline: none;
 }
 
 .plan-day-delete-btn {
@@ -1384,23 +1381,6 @@ body:has(.workout-active-mode) .app-header {
   border: 1px solid rgba(185, 76, 65, 0.15);
 }
 
-/* Sheet backdrop overlay inside dialog */
-.sheet-backdrop-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100vw;
-  height: 100vh;
-  min-height: 100%;
-  background: rgba(20, 32, 27, 0.45);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  z-index: 0;
-  animation: sheet-backdrop-in 0.2s ease-out;
-}
-
 .bottom-sheet .sheet-panel {
   position: relative;
   z-index: 1;
@@ -1435,6 +1415,30 @@ body:has(.workout-readonly-mode) .app-header {
 
 .workout-readonly-mode .exercise-panel:first-child {
   margin-top: 0 !important;
+}
+
+/* Ensure mobile brand header aligns icon + text */
+.mobile-brand {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-forma-mark {
+  width: 24px;
+  height: 24px;
+  background: var(--lime);
+  border-radius: 7px;
+  padding: 4px;
+  box-sizing: content-box;
+  color: #1a2718;
+  flex-shrink: 0;
+}
+
+/* Scrim & Safe area top cover */
+html.sheet-is-open,
+html.sheet-is-open body {
+  background-color: #14201b !important;
 }
 
 .start-actions{display:flex;align-items:stretch;gap:10px;width:100%;margin-top:4px}.start-actions>.btn{min-width:0;margin-top:0}.start-actions>.start-free-button{flex:3;background:transparent;border-color:var(--color-border);color:var(--color-muted)}.start-actions>.start-planned-button{flex:7}

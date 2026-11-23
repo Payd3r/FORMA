@@ -132,21 +132,22 @@ export default function WorkoutRoute() {
     }
 
     // Aggiunta singola o multipla
+    const daySnapshot = s.daySnapshot;
     const validToAdd = pickedArray.filter(
-      exercise => !s.daySnapshot.exercises.some(e => e.exerciseId === exercise.exerciseId)
+      exercise => !daySnapshot.exercises.some(e => e.exerciseId === exercise.exerciseId)
     );
     if (validToAdd.length === 0) {
       setError('Tutti gli esercizi selezionati sono già presenti nella sessione');
       return;
     }
 
-    const exercises = [...s.daySnapshot.exercises, ...validToAdd];
+    const exercises = [...daySnapshot.exercises, ...validToAdd];
     const newEntries = validToAdd.map(exercise => ({
       exerciseId: exercise.exerciseId,
       performedSets: seedSets(exercise, progressionSessions),
     }));
     const entries = [...s.entries, ...newEntries];
-    changeExercises({ ...s.daySnapshot, exercises }, entries);
+    changeExercises({ ...daySnapshot, exercises }, entries);
     setExerciseId(validToAdd[0].exerciseId);
     localStorage.setItem(`forma-exercise:${s.sessionId}`, validToAdd[0].exerciseId);
   }
@@ -384,7 +385,7 @@ export default function WorkoutRoute() {
             <Button variant="secondary" className="order-footer-close-btn" onClick={() => setOrderOpen(false)}>
               Chiudi
             </Button>
-            <Button className="order-footer-add-btn" onClick={() => { setOrderOpen(false); setPermanent(false); setPicker({}); }}>
+            <Button className="order-footer-add-btn" onClick={() => setPicker({})}>
               <Icon name="plus" size={17} /> Aggiungi esercizio
             </Button>
           </div>
@@ -408,7 +409,7 @@ export default function WorkoutRoute() {
                   <button className="icon-button" disabled={i === day.exercises.length - 1} aria-label={`Sposta giù ${e.name}`} onClick={() => { const exercises = [...day.exercises];[exercises[i + 1], exercises[i]] = [exercises[i], exercises[i + 1]]; changeExercises({ ...day, exercises }); }}>
                     <Icon name="down" size={17} />
                   </button>
-                  <button className="icon-button danger-text" aria-label={`Rimuovi ${e.name}`} onClick={() => { setOrderOpen(false); setRemoveExercise(e); }}>
+                  <button className="icon-button danger-text" aria-label={`Rimuovi ${e.name}`} onClick={() => setRemoveExercise(e)}>
                     <Icon name="trash" size={16} />
                   </button>
                 </div>
@@ -426,7 +427,22 @@ export default function WorkoutRoute() {
         onClose={() => setPicker(null)}
         onPick={e => { void pickExercise(e); }}
       />
-      <BottomSheet open={!!removeExercise} title="Rimuovere questo esercizio?" description={`${removeExercise?.name ?? ''}: le sue serie verranno rimosse solo da questa seduta. Puoi annullare subito dopo`} tone="danger" confirmLabel="Rimuovi esercizio" onClose={() => setRemoveExercise(null)} onConfirm={() => { changeExercises({ ...day, exercises: day.exercises.filter(e => e.exerciseId !== removeExercise?.exerciseId) }, session.entries.filter(e => e.exerciseId !== removeExercise?.exerciseId)); setExerciseId(day.exercises.find(e => e.exerciseId !== removeExercise?.exerciseId)?.exerciseId ?? ''); }} />
+      <BottomSheet
+        open={!!removeExercise}
+        title="Rimuovere questo esercizio?"
+        description={`${removeExercise?.name ?? ''}: le sue serie verranno rimosse solo da questa seduta. Puoi annullare subito dopo`}
+        tone="danger"
+        confirmLabel="Rimuovi esercizio"
+        onClose={() => setRemoveExercise(null)}
+        onConfirm={() => {
+          if (!removeExercise) return;
+          const removedId = removeExercise.exerciseId;
+          const exercises = day.exercises.filter(exercise => exercise.exerciseId !== removedId);
+          const entries = session.entries.filter(entry => entry.exerciseId !== removedId);
+          changeExercises({ ...day, exercises }, entries);
+          if (exerciseId === removedId) setExerciseId(exercises[0]?.exerciseId ?? '');
+        }}
+      />
       <BottomSheet open={finish} title="Concludi sessione" description={`${done} serie confermate su ${total}. Solo le serie confermate entrano nello storico`} confirmLabel="Salva e concludi" onClose={() => showFinish(false)} onConfirm={async () => { if (!done) throw new Error('Conferma almeno una serie prima di concludere'); setBusy(true); try { await chain.current; if (saveFailed.current) throw new Error('Attendi il salvataggio delle ultime modifiche'); await complete.mutateAsync({ sessionId: session.sessionId }); setTimer(null); writeRestTimer(null); current.current = null; setSession(null); navigate('/history'); } finally { setBusy(false); } }} />
       <BottomSheet open={deleting} title="Eliminare questa seduta?" description="La cancellazione verrà sincronizzata anche sugli altri dispositivi" confirmLabel="Elimina seduta" tone="danger" onClose={() => showDelete(false)} onConfirm={async () => { await remove.mutateAsync({ sessionId: session.sessionId }); navigate('/history'); }} />
     </div>;

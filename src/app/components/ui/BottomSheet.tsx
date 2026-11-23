@@ -1,28 +1,9 @@
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import Button from './Button';
+import { registerBottomSheet } from './bottomSheetRuntime';
 
 export type BottomSheetProps = { open: boolean; title?: string; description?: string; confirmLabel?: string; cancelLabel?: string; tone?: 'default' | 'danger'; onConfirm?: () => void | Promise<void>; onClose: () => void; children?: ReactNode; footer?: ReactNode };
-let locks = 0;
-let unlockPage: (() => void) | undefined;
-function lockPage() {
-  if (locks++ === 0) {
-    const y = window.scrollY;
-    const body = document.body;
-    const previous = { position: body.style.position, top: body.style.top, left: body.style.left, right: body.style.right, width: body.style.width, overflow: body.style.overflow };
-    const htmlOverflow = document.documentElement.style.overflow;
-    const rootBackground = document.documentElement.style.backgroundColor;
-    const themeMeta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
-    const themeColor = themeMeta?.content;
-    document.documentElement.style.backgroundColor = 'rgba(20, 32, 27, 0.4)';
-    themeMeta?.setAttribute('content', '#14201b');
-    document.documentElement.classList.add('sheet-is-open');
-    Object.assign(body.style, { position: 'fixed', top: `-${y}px`, left: '0', right: '0', width: '100%', overflow: 'hidden' });
-    document.documentElement.style.overflow = 'hidden';
-    unlockPage = () => { Object.assign(body.style, previous); document.documentElement.style.overflow = htmlOverflow; document.documentElement.style.backgroundColor = rootBackground; document.documentElement.classList.remove('sheet-is-open'); if (themeMeta && themeColor !== undefined) themeMeta.content = themeColor; window.scrollTo({ top: y, behavior: 'instant' }); };
-  }
-  return () => { if (--locks === 0) { unlockPage?.(); unlockPage = undefined; } };
-}
 export default function BottomSheet({ open, title, description, confirmLabel = 'Conferma', cancelLabel = 'Annulla', tone, onConfirm, onClose, children, footer }: BottomSheetProps) {
   const dialog = useRef<HTMLDialogElement>(null); const panel = useRef<HTMLDivElement>(null); const content = useRef<HTMLDivElement>(null);
   const [busy, setBusy] = useState(false); const [error, setError] = useState(''); const [closing, setClosing] = useState(false);
@@ -39,20 +20,15 @@ export default function BottomSheet({ open, title, description, confirmLabel = '
   const requestCloseRef = useRef(requestClose); requestCloseRef.current = requestClose;
   useEffect(() => {
     if (!open) { dialog.current?.close(); return; }
-    setError(''); setClosing(false); closingRef.current = false; const release = lockPage(); const node = dialog.current!;
+    setError(''); setClosing(false); closingRef.current = false; const node = dialog.current!;
     const previousFocus = document.activeElement;
-    node.showModal(); content.current?.scrollTo(0, 0);
-    const viewport = window.visualViewport;
-    function resize() {
-      const height = viewport?.height ?? window.innerHeight; const top = viewport?.offsetTop ?? 0;
-      node.style.setProperty('--sheet-viewport-height', `${height}px`);
-      node.style.setProperty('--sheet-viewport-top', `${top}px`);
-      node.classList.toggle('keyboard-open', window.innerHeight - height > 120);
-      const active = document.activeElement;
-      if (active instanceof HTMLElement && node.contains(active) && /INPUT|TEXTAREA|SELECT/.test(active.tagName)) requestAnimationFrame(() => active.scrollIntoView({ block: 'nearest', inline: 'nearest' }));
-    }
-    resize(); viewport?.addEventListener('resize', resize); viewport?.addEventListener('scroll', resize); window.addEventListener('resize', resize);
-    return () => { clearTimeout(closeTimer.current); node.close(); viewport?.removeEventListener('resize', resize); viewport?.removeEventListener('scroll', resize); window.removeEventListener('resize', resize); release(); if (previousFocus instanceof HTMLElement && previousFocus.isConnected) previousFocus.focus({ preventScroll: true }); };
+    node.showModal();
+    // Focus the dialog surface itself so native autofocus cannot jump to a
+    // nested search input and open iOS's keyboard as a presenting side effect.
+    node.focus({ preventScroll: true });
+    content.current?.scrollTo(0, 0);
+    const release = registerBottomSheet(node, content.current!);
+    return () => { clearTimeout(closeTimer.current); node.style.transition = ''; node.style.transform = ''; node.close(); release(); if (previousFocus instanceof HTMLElement && previousFocus.isConnected) previousFocus.focus({ preventScroll: true }); };
   }, [open]);
   useEffect(() => {
     if (!open) return;
@@ -100,31 +76,29 @@ export default function BottomSheet({ open, title, description, confirmLabel = '
     node.addEventListener('touchstart', start, { passive: true }); node.addEventListener('touchmove', move, { passive: false }); node.addEventListener('touchend', end); node.addEventListener('touchcancel', cancel);
     return () => { node.removeEventListener('touchstart', start); node.removeEventListener('touchmove', move); node.removeEventListener('touchend', end); node.removeEventListener('touchcancel', cancel); };
   }, [open]);
+  const panelView = <div ref={panel} className={`sheet-panel ${closing ? 'sheet-closing' : ''}`} data-sheet-panel="true" onClickCapture={event => { if (dragged.current) { event.preventDefault(); event.stopPropagation(); dragged.current = false; } }}>
+    <div className="sheet-handle" aria-hidden="true"><span /></div>
+    <header className="sheet-header"><div>{title && <h2 id={titleId}>{title}</h2>}{description && <p id={descriptionId}>{description}</p>}</div></header>
+    <div ref={content} className="sheet-content" data-sheet-content="true">{children}{error && <p role="alert" className="error-message">{error}</p>}</div>
+    <footer className="sheet-footer" data-sheet-footer="true">
+      {footer !== undefined ? footer : <>
+        <Button variant="secondary" onClick={requestClose} disabled={busy}>{cancelLabel}</Button>
+        {onConfirm && <Button loading={busy} variant={tone === 'danger' ? 'danger' : 'primary'} onClick={async () => { setBusy(true); setError(''); try { await onConfirm(); setBusy(false); closeRef.current(); } catch (e) { setError(e instanceof Error ? e.message : 'Operazione non riuscita'); setBusy(false); } }}>{confirmLabel}</Button>}
+      </>}
+    </footer>
+  </div>;
+
   return createPortal(
     <dialog
       ref={dialog}
       className="bottom-sheet"
+      tabIndex={-1}
       aria-labelledby={title ? titleId : undefined}
       aria-describedby={description ? descriptionId : undefined}
       onCancel={event => { event.preventDefault(); requestClose(); }}
       onClick={event => { if (event.target === dialog.current) requestClose(); }}
     >
-      <div className="sheet-backdrop-overlay" aria-hidden="true" onClick={requestClose} />
-      <div ref={panel} className={`sheet-panel ${closing ? 'sheet-closing' : ''}`} onClickCapture={event => { if (dragged.current) { event.preventDefault(); event.stopPropagation(); dragged.current = false; } }}>
-        <div className="sheet-handle" aria-hidden="true"><span /></div>
-        <header className="sheet-header"><div>{title && <h2 id={titleId}>{title}</h2>}{description && <p id={descriptionId}>{description}</p>}</div></header>
-        <div ref={content} className="sheet-content">{children}{error && <p role="alert" className="error-message">{error}</p>}</div>
-        <footer className="sheet-footer">
-          {footer !== undefined ? (
-            footer
-          ) : (
-            <>
-              <Button variant="secondary" onClick={requestClose} disabled={busy}>{cancelLabel}</Button>
-              {onConfirm && <Button loading={busy} variant={tone === 'danger' ? 'danger' : 'primary'} onClick={async () => { setBusy(true); setError(''); try { await onConfirm(); setBusy(false); closeRef.current(); } catch (e) { setError(e instanceof Error ? e.message : 'Operazione non riuscita'); setBusy(false); } }}>{confirmLabel}</Button>}
-            </>
-          )}
-        </footer>
-      </div>
+      {panelView}
     </dialog>,
     document.body
   );

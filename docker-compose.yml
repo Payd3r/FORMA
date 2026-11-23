@@ -1,4 +1,4 @@
-version: "3.9"
+name: forma
 
 services:
   fitness-web:
@@ -6,6 +6,8 @@ services:
     build: .
     container_name: fitness-pwa
     restart: unless-stopped
+    depends_on:
+      - fitness-api
     networks:
       - web-proxy
     # No ports exposed here; Nginx Proxy Manager (or other reverse proxy)

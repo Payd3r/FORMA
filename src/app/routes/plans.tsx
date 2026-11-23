@@ -167,10 +167,12 @@ export default function PlansRoute() {
             <div className="plan-active-day-section">
               <div className="plan-day-meta-bar">
                 <div className="plan-day-title-edit">
-                  <span className="eyebrow">NOME DEL GIORNO</span>
+                  <label className="eyebrow" htmlFor="plan-day-name-field">Nome del giorno</label>
                   <input
-                    className="plan-day-inline-input"
+                    id="plan-day-name-field"
+                    className="input plan-day-inline-input"
                     value={currentDay.label}
+                    placeholder="Es. Dorso e bicipiti"
                     onChange={e =>
                       setEditing({
                         ...editing,

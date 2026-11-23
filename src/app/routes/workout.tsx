@@ -92,6 +92,17 @@ export default function WorkoutRoute() {
       if (result.stato === 'avviata') { current.current = result.sessione; setSession(result.sessione); setExerciseId(day.exercises[0]?.exerciseId ?? ''); setTimer(null); writeRestTimer(null); window.scrollTo({ top: 0, behavior: 'instant' }); }
     } catch { setError('Impossibile avviare la sessione. Verifica lo spazio disponibile sul dispositivo'); }
   }
+  async function beginFree() {
+    setError('');
+    const day: DayTemplate = { dayId: 'libero', label: 'Allenamento libero', exercises: [] };
+    try {
+      const result = await start.mutateAsync({ templateId: 'free-workout', templateName: 'Allenamento libero', dayId: day.dayId, daySnapshot: day, entries: [] });
+      if (result.stato === 'avviata') {
+        current.current = result.sessione; setSession(result.sessione); setExerciseId(''); setTimer(null); writeRestTimer(null); setOrderOpen(true);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+    } catch { setError('Impossibile avviare la sessione. Verifica lo spazio disponibile sul dispositivo'); }
+  }
   const baseline = library?.templates.find(t => t.templateId === (session?.templateId ?? template.templateId))?.baselineAfter;
   const progressionSessions = baseline ? sessions.filter(s => s.createdAt >= baseline) : sessions;
   const allExercises = catalog(sessions, [template, ...(library?.templates ?? []), legacyTemplate]);
@@ -141,7 +152,7 @@ export default function WorkoutRoute() {
   }
   if (loadingActive || (sessionId && loadingViewed)) return <div className="loading-state">Apro il tuo diario…</div>;
   if (sessionId && !viewed) return <div className="empty-state"><h1>Sessione non trovata</h1><Link to="/history" className="text-link">Torna al diario</Link></div>;
-  if (!source && !session) return <div className="page-stack"><div className="page-title"><div><h1>Allenamento</h1></div></div><div className="day-tabs">{template.days.map((d, i) => <button className={selectedDay === d.dayId ? 'active' : ''} key={d.dayId} onClick={() => selectDay(d.dayId)}><span>0{i + 1}</span>{d.label}</button>)}</div><div className="workout-preview"><div className="panel preview-list"><p className="eyebrow">{template.name}</p>{(template.days.find(d => d.dayId === selectedDay) ?? template.days[0]).exercises.map((e, i) => <div className="preview-exercise" key={e.exerciseId}><span className="muted tiny">{String(i + 1).padStart(2, '0')}</span><div><strong>{e.name}</strong><small>{muscleLabels[e.muscleGroup ?? '']} · {e.sets.length} serie × {e.sets.map(s => s.repsTarget).join(' / ')}</small></div><button className="icon-button" aria-label={`Storico ${e.name}`} onClick={() => showHistory(e)}><Icon name="history" /></button></div>)}</div><aside className="start-panel"><span className="round-icon"><Icon name="workout" size={30} /></span><h2>Allenamento</h2><Button onClick={begin} loading={start.isPending}>Inizia allenamento <Icon name="arrow" /></Button></aside></div>{error && <p role="alert" className="error-message">{error}</p>}<ExerciseHistory exercise={history} sessions={sessions} onClose={() => showHistory(null)} /></div>;
+  if (!source && !session) return <div className="page-stack"><div className="page-title"><div><h1>Allenamento</h1></div></div><div className="day-tabs">{template.days.map((d, i) => <button className={selectedDay === d.dayId ? 'active' : ''} key={d.dayId} onClick={() => selectDay(d.dayId)}><span>0{i + 1}</span>{d.label}</button>)}</div><div className="workout-preview"><div className="panel preview-list"><p className="eyebrow">{template.name}</p>{(template.days.find(d => d.dayId === selectedDay) ?? template.days[0]).exercises.map((e, i) => <div className="preview-exercise" key={e.exerciseId}><span className="muted tiny">{String(i + 1).padStart(2, '0')}</span><div><strong>{e.name}</strong><small>{muscleLabels[e.muscleGroup ?? '']} · {e.sets.length} serie × {e.sets.map(s => s.repsTarget).join(' / ')}</small></div><button className="icon-button" aria-label={`Storico ${e.name}`} onClick={() => showHistory(e)}><Icon name="history" /></button></div>)}</div><aside className="start-panel"><span className="round-icon"><Icon name="workout" size={30} /></span><h2>Allenamento</h2><div className="start-actions"><Button variant="secondary" className="start-free-button" onClick={beginFree} loading={start.isPending}>Libero</Button><Button className="start-planned-button" onClick={begin} loading={start.isPending}>Inizia scheda <Icon name="arrow" /></Button></div></aside></div>{error && <p role="alert" className="error-message">{error}</p>}<ExerciseHistory exercise={history} sessions={sessions} onClose={() => showHistory(null)} /></div>;
   if (!session) return <div className="loading-state">Apro la sessione…</div>;
   const day = session.daySnapshot ?? sessionDay(session, library?.templates);
   const selectedIndex = Math.max(0, day.exercises.findIndex(e => e.exerciseId === exerciseId));
